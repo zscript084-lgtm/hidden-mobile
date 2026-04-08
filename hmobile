@@ -123,6 +123,7 @@ btn.MouseEnter:Connect(function() btn.BackgroundColor3 = Color3.fromRGB(80, 0, 0
 btn.MouseLeave:Connect(function() btn.BackgroundColor3 = Color3.fromRGB(50, 0, 0) end)
 return btn
 end
+local CorsairEasterBtn = makeButton("CorsairEaster", "Corsair [Easter Event]", -18)
 local SheggHuntBtn = makeButton("SheggHunt2026", "The Shegg Hunt 2026", -17)
 local SharkBiteBtn = makeButton("SharkBite2", "SharkBite 2 [Easter Event]", -16)
 local PopBoxBtn = makeButton("PopBox", "Pop Box", -15)
@@ -162,6 +163,10 @@ local SleepForUgcBtn = makeButton("SleepForUgc", "Sleep For Ugc", 24)
 local FindThePlushieBtn = makeButton("FindThePlushie", "Find The Plushie [107]", 25)
 local BetterMovieBtn = makeButton("BetterMovie", "Better Movie?", 26)
 local FracterraRPBtn = makeButton("FracterraRP", "Fracterra RP", 27)
+CorsairEasterBtn.MouseButton1Click:Connect(function()
+HubGui:Destroy()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/zscript084-lgtm/ghaggshasas/refs/heads/main/owyqwyqiuwq"))()
+end)
 SheggHuntBtn.MouseButton1Click:Connect(function()
 HubGui:Destroy()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/zscript084-lgtm/ghaggshasas/refs/heads/main/qwqwqw"))()
