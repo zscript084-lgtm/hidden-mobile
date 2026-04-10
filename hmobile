@@ -1,4 +1,4 @@
-loadstring([[local Players = game:GetService("Players")
+local Players = game:GetService("Players")
 local CoreGui = game:GetService("CoreGui")
 local UserInputService = game:GetService("UserInputService")
 local RunService = game:GetService("RunService")
@@ -371,4 +371,4 @@ if dragging and (input.UserInputType == Enum.UserInputType.MouseMovement or inpu
 local delta = input.Position - dragStart
 MainFrame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
 end
-end)]])()
+end)
