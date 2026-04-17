@@ -2,16 +2,19 @@ local Players = game:GetService("Players")
 local CoreGui = game:GetService("CoreGui")
 local UserInputService = game:GetService("UserInputService")
 local RunService = game:GetService("RunService")
+
 local HubGui = Instance.new("ScreenGui")
 HubGui.Name = "DarkRedHub"
+
 if gethui then
-HubGui.Parent = gethui()
+    HubGui.Parent = gethui()
 elseif syn and syn.protect_gui then
-syn.protect_gui(HubGui)
-HubGui.Parent = CoreGui
+    syn.protect_gui(HubGui)
+    HubGui.Parent = CoreGui
 else
-HubGui.Parent = CoreGui
+    HubGui.Parent = CoreGui
 end
+
 local MainFrame = Instance.new("Frame")
 MainFrame.Name = "MainFrame"
 MainFrame.Parent = HubGui
@@ -21,24 +24,29 @@ MainFrame.Size = UDim2.new(0, 450, 0, 350)
 MainFrame.BorderSizePixel = 0
 MainFrame.ClipsDescendants = true
 MainFrame.Active = true
+
 local UICorner_Main = Instance.new("UICorner")
 UICorner_Main.CornerRadius = UDim.new(0, 12)
 UICorner_Main.Parent = MainFrame
+
 local TopBar = Instance.new("Frame")
 TopBar.Name = "TopBar"
 TopBar.Parent = MainFrame
 TopBar.BackgroundColor3 = Color3.fromRGB(40, 0, 0)
 TopBar.Size = UDim2.new(1, 0, 0, 60)
 TopBar.BorderSizePixel = 0
+
 local UICorner_Top = Instance.new("UICorner")
 UICorner_Top.CornerRadius = UDim.new(0, 12)
 UICorner_Top.Parent = TopBar
+
 local TopBarCover = Instance.new("Frame")
 TopBarCover.Parent = TopBar
 TopBarCover.BackgroundColor3 = Color3.fromRGB(40, 0, 0)
 TopBarCover.BorderSizePixel = 0
 TopBarCover.Position = UDim2.new(0, 0, 1, -10)
 TopBarCover.Size = UDim2.new(1, 0, 0, 10)
+
 local Logo = Instance.new("ImageLabel")
 Logo.Name = "Logo"
 Logo.Parent = TopBar
@@ -47,6 +55,7 @@ Logo.Position = UDim2.new(0, 12, 0, 5)
 Logo.Size = UDim2.new(0, 50, 0, 50)
 Logo.Image = "rbxassetid://115813557560542"
 Logo.ScaleType = Enum.ScaleType.Fit
+
 local SearchBar = Instance.new("TextBox")
 SearchBar.Name = "SearchBar"
 SearchBar.Parent = TopBar
@@ -62,12 +71,15 @@ SearchBar.TextSize = 14
 SearchBar.TextXAlignment = Enum.TextXAlignment.Left
 SearchBar.BorderSizePixel = 0
 SearchBar.ClearTextOnFocus = false
+
 local UICorner_Search = Instance.new("UICorner")
 UICorner_Search.CornerRadius = UDim.new(0, 8)
 UICorner_Search.Parent = SearchBar
+
 local SearchPadding = Instance.new("UIPadding")
 SearchPadding.PaddingLeft = UDim.new(0, 10)
 SearchPadding.Parent = SearchBar
+
 local MinimizeBtn = Instance.new("TextButton")
 MinimizeBtn.Name = "MinimizeBtn"
 MinimizeBtn.Parent = TopBar
@@ -79,9 +91,11 @@ MinimizeBtn.Text = "-"
 MinimizeBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
 MinimizeBtn.TextSize = 20
 MinimizeBtn.BorderSizePixel = 0
+
 local UICorner_Min = Instance.new("UICorner")
 UICorner_Min.CornerRadius = UDim.new(0, 8)
 UICorner_Min.Parent = MinimizeBtn
+
 local ScrollContainer = Instance.new("ScrollingFrame")
 ScrollContainer.Name = "ScrollContainer"
 ScrollContainer.Parent = MainFrame
@@ -94,35 +108,39 @@ ScrollContainer.ScrollBarThickness = 4
 ScrollContainer.ScrollBarImageColor3 = Color3.fromRGB(80, 0, 0)
 ScrollContainer.AutomaticCanvasSize = Enum.AutomaticSize.Y
 ScrollContainer.CanvasSize = UDim2.new(0, 0, 0, 0)
+
 local ScriptListLayout = Instance.new("UIListLayout")
 ScriptListLayout.Parent = ScrollContainer
 ScriptListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
 ScriptListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 ScriptListLayout.Padding = UDim.new(0, 8)
+
 local ListPadding = Instance.new("UIPadding")
 ListPadding.PaddingTop = UDim.new(0, 8)
 ListPadding.PaddingBottom = UDim.new(0, 20)
 ListPadding.Parent = ScrollContainer
+
 local function makeButton(name, label, order)
-local btn = Instance.new("TextButton")
-local corner = Instance.new("UICorner")
-btn.Name = name
-btn.Parent = ScrollContainer
-btn.BackgroundColor3 = Color3.fromRGB(50, 0, 0)
-btn.Size = UDim2.new(0, 420, 0, 45)
-btn.Font = Enum.Font.GothamBold
-btn.Text = label
-btn.TextColor3 = Color3.fromRGB(255, 255, 255)
-btn.TextSize = 16
-btn.LayoutOrder = order
-btn.BorderSizePixel = 0
-btn.Visible = true
-corner.CornerRadius = UDim.new(0, 8)
-corner.Parent = btn
-btn.MouseEnter:Connect(function() btn.BackgroundColor3 = Color3.fromRGB(80, 0, 0) end)
-btn.MouseLeave:Connect(function() btn.BackgroundColor3 = Color3.fromRGB(50, 0, 0) end)
-return btn
+    local btn = Instance.new("TextButton")
+    local corner = Instance.new("UICorner")
+    btn.Name = name
+    btn.Parent = ScrollContainer
+    btn.BackgroundColor3 = Color3.fromRGB(50, 0, 0)
+    btn.Size = UDim2.new(0, 420, 0, 45)
+    btn.Font = Enum.Font.GothamBold
+    btn.Text = label
+    btn.TextColor3 = Color3.fromRGB(255, 255, 255)
+    btn.TextSize = 16
+    btn.LayoutOrder = order
+    btn.BorderSizePixel = 0
+    btn.Visible = true
+    corner.CornerRadius = UDim.new(0, 8)
+    corner.Parent = btn
+    btn.MouseEnter:Connect(function() btn.BackgroundColor3 = Color3.fromRGB(80, 0, 0) end)
+    btn.MouseLeave:Connect(function() btn.BackgroundColor3 = Color3.fromRGB(50, 0, 0) end)
+    return btn
 end
+
 local ElfUpBtn = makeButton("ElfUp", "Elf Up", -19)
 local CorsairEasterBtn = makeButton("CorsairEaster", "Corsair [Easter Event]", -18)
 local SheggHuntBtn = makeButton("SheggHunt2026", "The Shegg Hunt 2026", -17)
@@ -167,228 +185,103 @@ local FracterraRPBtn = makeButton("FracterraRP", "Fracterra RP", 27)
 local InfiniteTowerBtn = makeButton("InfiniteTower", "Infinite Tower:Galaxy Store", 28)
 local TropikaBtn = makeButton("TropikaAvatarShopping", "Tropika: Avatar Shopping Game", 29)
 local AlmaraiWorldBtn = makeButton("AlmaraiWorld", "Almarai World", 44)
-ElfUpBtn.MouseButton1Click:Connect(function()
-HubGui:Destroy()
-loadstring(game:HttpGet("https://pastefy.app/tejLsbZv/raw"))()
-end)
-CorsairEasterBtn.MouseButton1Click:Connect(function()
-HubGui:Destroy()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/zscript084-lgtm/ghaggshasas/refs/heads/main/owyqwyqiuwq"))()
-end)
-SheggHuntBtn.MouseButton1Click:Connect(function()
-HubGui:Destroy()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/zscript084-lgtm/ghaggshasas/refs/heads/main/qwqwqw"))()
-end)
-SharkBiteBtn.MouseButton1Click:Connect(function()
-HubGui:Destroy()
-loadstring(game:HttpGet("https://pastebin.com/raw/PScRvTP6"))()
-end)
-PopBoxBtn.MouseButton1Click:Connect(function()
-HubGui:Destroy()
-loadstring(game:HttpGet("https://pastebin.com/raw/5zhJNpUH"))()
-end)
-NightsForestBtn.MouseButton1Click:Connect(function()
-HubGui:Destroy()
-loadstring(game:HttpGet("https://pastefy.app/WktFjGel/raw"))()
-end)
-CursedCleanersBtn.MouseButton1Click:Connect(function()
-HubGui:Destroy()
-loadstring(game:HttpGet("https://pastefy.app/Mvdn3hqB/raw"))()
-end)
-AnimeMonsterBtn.MouseButton1Click:Connect(function()
-HubGui:Destroy()
-loadstring(game:HttpGet("https://pastebin.com/raw/50h0cE45"))()
-end)
-TheMorgueShiftBtn.MouseButton1Click:Connect(function()
-HubGui:Destroy()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/zscript084-lgtm/demo/refs/heads/main/obfuscated_script-1774223948799.lua"))()
-end)
-MorphotypeRngBtn.MouseButton1Click:Connect(function()
-HubGui:Destroy()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/zeroextwenty-eng/iwiowewewewe/refs/heads/main/obfuscated_script-1773757573412.lua"))()
-end)
-KingdomEssentiaBtn.MouseButton1Click:Connect(function()
-HubGui:Destroy()
-loadstring(game:HttpGet("https://pastebin.com/raw/mkrER5sp"))()
-end)
-BadgeHuntBtn.MouseButton1Click:Connect(function()
-HubGui:Destroy()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1773746112289.lua"))()
-end)
-WickedRPBtn.MouseButton1Click:Connect(function()
-HubGui:Destroy()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1773442018843.lua"))()
-end)
-AdidasSuperStarBtn.MouseButton1Click:Connect(function()
-HubGui:Destroy()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1772853857022.lua.txt", true))()
-end)
-PGAUltimateBtn.MouseButton1Click:Connect(function()
-HubGui:Destroy()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1773257453218.lua"))()
-end)
-SpinWheelItemsRaresBtn.MouseButton1Click:Connect(function()
-HubGui:Destroy()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1772962912887.lua"))()
-end)
-AfkCollectiblesBtn.MouseButton1Click:Connect(function()
-HubGui:Destroy()
-loadstring(game:HttpGet("https://protected-roblox-scripts.onrender.com/9adafa23ad8865ad5d48329e354f82de"))()
-end)
-SmashPebblesBtn.MouseButton1Click:Connect(function()
-HubGui:Destroy()
-loadstring(game:HttpGet("https://protected-roblox-scripts.onrender.com/289fe573a95fb964655a55218eaa0fc0"))()
-end)
-IdleUGCPointsBtn.MouseButton1Click:Connect(function()
-HubGui:Destroy()
-loadstring(game:HttpGet("https://protected-roblox-scripts.onrender.com/fdfdfc6906106f56e7e45c76f1d3747d"))()
-end)
-WonderChaseLNYBtn.MouseButton1Click:Connect(function()
-HubGui:Destroy()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1773806318157.lua"))()
-end)
-MasjidAnNurBtn.MouseButton1Click:Connect(function()
-HubGui:Destroy()
-loadstring(game:HttpGet("https://protected-roblox-scripts.onrender.com/b023b14a6833b11dcaa0b99f4b6bf45b"))()
-end)
-TrashVsGarbageBtn.MouseButton1Click:Connect(function()
-HubGui:Destroy()
-loadstring(game:HttpGet("https://protected-roblox-scripts.onrender.com/d5b35086e29e44f4ec1aef04a1659ef4"))()
-end)
-EscapeTsunamiBtn.MouseButton1Click:Connect(function()
-HubGui:Destroy()
-loadstring(game:HttpGet("https://protected-roblox-scripts.onrender.com/2b57c10abca599b1962f1e6a08404749"))()
-end)
-MudemVerseBtn.MouseButton1Click:Connect(function()
-HubGui:Destroy()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1773794566418.lua"))()
-end)
-LuckyLimitedsBtn.MouseButton1Click:Connect(function()
-HubGui:Destroy()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1772977586024.lua"))()
-end)
-CyberRoomBtn.MouseButton1Click:Connect(function()
-HubGui:Destroy()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1773047249071.lua"))()
-end)
-BroomRacingBtn.MouseButton1Click:Connect(function()
-HubGui:Destroy()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1773060784411.lua"))()
-end)
-HexMallBtn.MouseButton1Click:Connect(function()
-HubGui:Destroy()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1773091430041.lua"))()
-end)
-ObbyFreeUGCBtn.MouseButton1Click:Connect(function()
-HubGui:Destroy()
-loadstring(game:HttpGet("https://protected-roblox-scripts.onrender.com/666f7fb3220fd121d9034f2a032b6ea8"))()
-end)
-EclipseUgcBtn.MouseButton1Click:Connect(function()
-HubGui:Destroy()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1773297539286.lua"))()
-end)
-GabbyDollHouseTycoonBtn.MouseButton1Click:Connect(function()
-HubGui:Destroy()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1773334969361.lua"))()
-end)
-SaveGrandmaTycoonBtn.MouseButton1Click:Connect(function()
-HubGui:Destroy()
-loadstring(game:HttpGet("https://pastebin.com/raw/vu6Kf0SD"))()
-end)
-SamsungsDemonHuntBtn.MouseButton1Click:Connect(function()
-HubGui:Destroy()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1773337834531.lua"))()
-end)
-AnActualImpossibleObbyBtn.MouseButton1Click:Connect(function()
-HubGui:Destroy()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1773392821022.lua"))()
-end)
-K3RegenbooglandBtn.MouseButton1Click:Connect(function()
-HubGui:Destroy()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1773518171701.lua.txt"))()
-end)
-AfkOrPlayBtn.MouseButton1Click:Connect(function()
-HubGui:Destroy()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1773523108588.lua"))()
-end)
-DTIObbyBtn.MouseButton1Click:Connect(function()
-HubGui:Destroy()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1773551716029.lua"))()
-end)
-SleepForUgcBtn.MouseButton1Click:Connect(function()
-HubGui:Destroy()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1773632133258.lua"))()
-end)
-FindThePlushieBtn.MouseButton1Click:Connect(function()
-HubGui:Destroy()
-loadstring(game:HttpGet("https://pastebin.com/raw/FBzvx3vd"))()
-end)
-BetterMovieBtn.MouseButton1Click:Connect(function()
-HubGui:Destroy()
-loadstring(game:HttpGet("https://pastebin.com/raw/8hbhhpAQ"))()
-end)
-FracterraRPBtn.MouseButton1Click:Connect(function()
-HubGui:Destroy()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/svrnaexploits/keylessfornow/refs/heads/main/inforbs.lua.txt"))()
-end)
-InfiniteTowerBtn.MouseButton1Click:Connect(function()
-HubGui:Destroy()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/zscript084-lgtm/jkhqkwqjwjjqkw/refs/heads/main/bq"))()
-end)
-TropikaBtn.MouseButton1Click:Connect(function()
-HubGui:Destroy()
-loadstring(game:HttpGet("https://pastefy.app/9mzcNztp/raw"))()
-end)
-AlmaraiWorldBtn.MouseButton1Click:Connect(function()
-HubGui:Destroy()
-loadstring(game:HttpGet("https://pastebin.com/raw/um4aUdR9"))()
-end)
+local CubeGaemBtn = makeButton("CubeGaem", "Cube Gaem", 45)
+
+ElfUpBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://pastefy.app/tejLsbZv/raw"))() end)
+CorsairEasterBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://raw.githubusercontent.com/zscript084-lgtm/ghaggshasas/refs/heads/main/owyqwyqiuwq"))() end)
+SheggHuntBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://raw.githubusercontent.com/zscript084-lgtm/ghaggshasas/refs/heads/main/qwqwqw"))() end)
+SharkBiteBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://pastebin.com/raw/PScRvTP6"))() end)
+PopBoxBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://pastebin.com/raw/5zhJNpUH"))() end)
+NightsForestBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://pastefy.app/WktFjGel/raw"))() end)
+CursedCleanersBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://pastefy.app/Mvdn3hqB/raw"))() end)
+AnimeMonsterBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://pastebin.com/raw/50h0cE45"))() end)
+TheMorgueShiftBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://raw.githubusercontent.com/zscript084-lgtm/demo/refs/heads/main/obfuscated_script-1774223948799.lua"))() end)
+MorphotypeRngBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://raw.githubusercontent.com/zeroextwenty-eng/iwiowewewewe/refs/heads/main/obfuscated_script-1773757573412.lua"))() end)
+KingdomEssentiaBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://pastebin.com/raw/mkrER5sp"))() end)
+BadgeHuntBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1773746112289.lua"))() end)
+WickedRPBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1773442018843.lua")) end)
+AdidasSuperStarBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1772853857022.lua.txt", true))() end)
+PGAUltimateBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1773257453218.lua"))() end)
+SpinWheelItemsRaresBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1772962912887.lua"))() end)
+AfkCollectiblesBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://protected-roblox-scripts.onrender.com/9adafa23ad8865ad5d48329e354f82de"))() end)
+SmashPebblesBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://protected-roblox-scripts.onrender.com/289fe573a95fb964655a55218eaa0fc0"))() end)
+IdleUGCPointsBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://protected-roblox-scripts.onrender.com/fdfdfc6906106f56e7e45c76f1d3747d"))() end)
+WonderChaseLNYBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1773806318157.lua"))() end)
+MasjidAnNurBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://protected-roblox-scripts.onrender.com/b023b14a6833b11dcaa0b99f4b6bf45b"))() end)
+TrashVsGarbageBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://protected-roblox-scripts.onrender.com/d5b35086e29e44f4ec1aef04a1659ef4"))() end)
+EscapeTsunamiBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://protected-roblox-scripts.onrender.com/2b57c10abca599b1962f1e6a08404749"))() end)
+MudemVerseBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1773794566418.lua"))() end)
+LuckyLimitedsBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1772977586024.lua"))() end)
+CyberRoomBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1773047249071.lua"))() end)
+BroomRacingBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1773060784411.lua"))() end)
+HexMallBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1773091430041.lua"))() end)
+ObbyFreeUGCBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://protected-roblox-scripts.onrender.com/666f7fb3220fd121d9034f2a032b6ea8"))() end)
+EclipseUgcBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1773297539286.lua"))() end)
+GabbyDollHouseTycoonBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1773334969361.lua"))() end)
+SaveGrandmaTycoonBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://pastebin.com/raw/vu6Kf0SD"))() end)
+SamsungsDemonHuntBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1773337834531.lua"))() end)
+AnActualImpossibleObbyBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1773392821022.lua"))() end)
+K3RegenbooglandBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1773518171701.lua.txt"))() end)
+AfkOrPlayBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1773523108588.lua"))() end)
+DTIObbyBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1773551716029.lua"))() end)
+SleepForUgcBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1773632133258.lua"))() end)
+FindThePlushieBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://pastebin.com/raw/FBzvx3vd"))() end)
+BetterMovieBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://pastebin.com/raw/8hbhhpAQ"))() end)
+FracterraRPBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://raw.githubusercontent.com/svrnaexploits/keylessfornow/refs/heads/main/inforbs.lua.txt"))() end)
+InfiniteTowerBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://raw.githubusercontent.com/zscript084-lgtm/jkhqkwqjwjjqkw/refs/heads/main/bq"))() end)
+TropikaBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://pastefy.app/9mzcNztp/raw"))() end)
+AlmaraiWorldBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://pastebin.com/raw/um4aUdR9"))() end)
+CubeGaemBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://pastefy.app/2EOBkSoZ/raw"))() end)
+
 SearchBar:GetPropertyChangedSignal("Text"):Connect(function()
-local text = SearchBar.Text:lower()
-for _, child in pairs(ScrollContainer:GetChildren()) do
-if child:IsA("TextButton") then
-if text == "" or string.find(child.Name:lower(), text) or string.find(child.Text:lower(), text) then
-child.Visible = true
-else
-child.Visible = false
-end
-end
-end
+    local text = SearchBar.Text:lower()
+    for _, child in pairs(ScrollContainer:GetChildren()) do
+        if child:IsA("TextButton") then
+            if text == "" or string.find(child.Name:lower(), text) or string.find(child.Text:lower(), text) then
+                child.Visible = true
+            else
+                child.Visible = false
+            end
+        end
+    end
 end)
+
 local isMinimized = false
 MinimizeBtn.MouseButton1Click:Connect(function()
-isMinimized = not isMinimized
-if isMinimized then
-MainFrame:TweenSize(UDim2.new(0, 450, 0, 60), "Out", "Quad", 0.3, true)
-ScrollContainer.Visible = false
-MinimizeBtn.Text = "+"
-else
-MainFrame:TweenSize(UDim2.new(0, 450, 0, 350), "Out", "Quad", 0.3, true)
-ScrollContainer.Visible = true
-MinimizeBtn.Text = "-"
-end
+    isMinimized = not isMinimized
+    if isMinimized then
+        MainFrame:TweenSize(UDim2.new(0, 450, 0, 60), "Out", "Quad", 0.3, true)
+        ScrollContainer.Visible = false
+        MinimizeBtn.Text = "+"
+    else
+        MainFrame:TweenSize(UDim2.new(0, 450, 0, 350), "Out", "Quad", 0.3, true)
+        ScrollContainer.Visible = true
+        MinimizeBtn.Text = "-"
+    end
 end)
+
 local dragging, dragStart, startPos
 TopBar.InputBegan:Connect(function(input)
-if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-local mousePos = input.Position
-local searchAbsPos = SearchBar.AbsolutePosition
-local searchAbsSize = SearchBar.AbsoluteSize
-local inSearch = mousePos.X >= searchAbsPos.X and mousePos.X <= searchAbsPos.X + searchAbsSize.X and mousePos.Y >= searchAbsPos.Y and mousePos.Y <= searchAbsPos.Y + searchAbsSize.Y
-local minAbsPos = MinimizeBtn.AbsolutePosition
-local minAbsSize = MinimizeBtn.AbsoluteSize
-local inMin = mousePos.X >= minAbsPos.X and mousePos.X <= minAbsPos.X + minAbsSize.X and mousePos.Y >= minAbsPos.Y and mousePos.Y <= minAbsPos.Y + minAbsSize.Y
-if not inSearch and not inMin then
-dragging = true
-dragStart = input.Position
-startPos = MainFrame.Position
-input.Changed:Connect(function() if input.UserInputState == Enum.UserInputState.End then dragging = false end end)
-end
-end
+    if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+        local mousePos = input.Position
+        local searchAbsPos = SearchBar.AbsolutePosition
+        local searchAbsSize = SearchBar.AbsoluteSize
+        local inSearch = mousePos.X >= searchAbsPos.X and mousePos.X <= searchAbsPos.X + searchAbsSize.X and mousePos.Y >= searchAbsPos.Y and mousePos.Y <= searchAbsPos.Y + searchAbsSize.Y
+        local minAbsPos = MinimizeBtn.AbsolutePosition
+        local minAbsSize = MinimizeBtn.AbsoluteSize
+        local inMin = mousePos.X >= minAbsPos.X and mousePos.X <= minAbsPos.X + minAbsSize.X and mousePos.Y >= minAbsPos.Y and mousePos.Y <= minAbsPos.Y + minAbsSize.Y
+        if not inSearch and not inMin then
+            dragging = true
+            dragStart = input.Position
+            startPos = MainFrame.Position
+            input.Changed:Connect(function() if input.UserInputState == Enum.UserInputState.End then dragging = false end end)
+        end
+    end
 end)
+
 UserInputService.InputChanged:Connect(function(input)
-if dragging and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
-local delta = input.Position - dragStart
-MainFrame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
-end
+    if dragging and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
+        local delta = input.Position - dragStart
+        MainFrame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+    end
 end)
