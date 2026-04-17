@@ -1,0 +1,202 @@
+local Players = game:GetService("Players")
+local CoreGui = game:GetService("CoreGui")
+local UserInputService = game:GetService("UserInputService")
+local RunService = game:GetService("RunService")
+
+local HubGui = Instance.new("ScreenGui")
+HubGui.Name = "BurnTheIceForBrainrots"
+
+if gethui then
+    HubGui.Parent = gethui()
+elseif syn and syn.protect_gui then
+    syn.protect_gui(HubGui)
+    HubGui.Parent = CoreGui
+else
+    HubGui.Parent = CoreGui
+end
+
+local MainFrame = Instance.new("Frame")
+MainFrame.Name = "MainFrame"
+MainFrame.Parent = HubGui
+MainFrame.BackgroundColor3 = Color3.fromRGB(20, 0, 0)
+MainFrame.Position = UDim2.new(0.5, -225, 0.5, -175)
+MainFrame.Size = UDim2.new(0, 450, 0, 350)
+MainFrame.BorderSizePixel = 0
+MainFrame.ClipsDescendants = true
+MainFrame.Active = true
+
+local UICorner_Main = Instance.new("UICorner")
+UICorner_Main.CornerRadius = UDim.new(0, 12)
+UICorner_Main.Parent = MainFrame
+
+local TopBar = Instance.new("Frame")
+TopBar.Name = "TopBar"
+TopBar.Parent = MainFrame
+TopBar.BackgroundColor3 = Color3.fromRGB(40, 0, 0)
+TopBar.Size = UDim2.new(1, 0, 0, 60)
+TopBar.BorderSizePixel = 0
+
+local UICorner_Top = Instance.new("UICorner")
+UICorner_Top.CornerRadius = UDim.new(0, 12)
+UICorner_Top.Parent = TopBar
+
+local TopBarCover = Instance.new("Frame")
+TopBarCover.Parent = TopBar
+TopBarCover.BackgroundColor3 = Color3.fromRGB(40, 0, 0)
+TopBarCover.BorderSizePixel = 0
+TopBarCover.Position = UDim2.new(0, 0, 1, -10)
+TopBarCover.Size = UDim2.new(1, 0, 0, 10)
+
+local Logo = Instance.new("ImageLabel")
+Logo.Name = "Logo"
+Logo.Parent = TopBar
+Logo.BackgroundTransparency = 1
+Logo.Position = UDim2.new(0, 12, 0, 5)
+Logo.Size = UDim2.new(0, 50, 0, 50)
+Logo.Image = "rbxassetid://115813557560542"
+Logo.ScaleType = Enum.ScaleType.Fit
+
+local SearchBar = Instance.new("TextBox")
+SearchBar.Name = "SearchBar"
+SearchBar.Parent = TopBar
+SearchBar.BackgroundColor3 = Color3.fromRGB(60, 0, 0)
+SearchBar.Position = UDim2.new(0, 75, 0, 15)
+SearchBar.Size = UDim2.new(0, 280, 0, 30)
+SearchBar.Font = Enum.Font.Gotham
+SearchBar.PlaceholderText = "Search..."
+SearchBar.PlaceholderColor3 = Color3.fromRGB(200, 150, 150)
+SearchBar.Text = ""
+SearchBar.TextColor3 = Color3.fromRGB(255, 255, 255)
+SearchBar.TextSize = 14
+SearchBar.TextXAlignment = Enum.TextXAlignment.Left
+SearchBar.BorderSizePixel = 0
+SearchBar.ClearTextOnFocus = false
+
+local UICorner_Search = Instance.new("UICorner")
+UICorner_Search.CornerRadius = UDim.new(0, 8)
+UICorner_Search.Parent = SearchBar
+
+local SearchPadding = Instance.new("UIPadding")
+SearchPadding.PaddingLeft = UDim.new(0, 10)
+SearchPadding.Parent = SearchBar
+
+local MinimizeBtn = Instance.new("TextButton")
+MinimizeBtn.Name = "MinimizeBtn"
+MinimizeBtn.Parent = TopBar
+MinimizeBtn.BackgroundColor3 = Color3.fromRGB(60, 0, 0)
+MinimizeBtn.Position = UDim2.new(1, -40, 0, 15)
+MinimizeBtn.Size = UDim2.new(0, 30, 0, 30)
+MinimizeBtn.Font = Enum.Font.GothamBold
+MinimizeBtn.Text = "-"
+MinimizeBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+MinimizeBtn.TextSize = 20
+MinimizeBtn.BorderSizePixel = 0
+
+local UICorner_Min = Instance.new("UICorner")
+UICorner_Min.CornerRadius = UDim.new(0, 8)
+UICorner_Min.Parent = MinimizeBtn
+
+local ScrollContainer = Instance.new("ScrollingFrame")
+ScrollContainer.Name = "ScrollContainer"
+ScrollContainer.Parent = MainFrame
+ScrollContainer.Active = true
+ScrollContainer.BackgroundTransparency = 1
+ScrollContainer.BorderSizePixel = 0
+ScrollContainer.Position = UDim2.new(0, 0, 0, 65)
+ScrollContainer.Size = UDim2.new(1, 0, 1, -70)
+ScrollContainer.ScrollBarThickness = 4
+ScrollContainer.ScrollBarImageColor3 = Color3.fromRGB(80, 0, 0)
+ScrollContainer.AutomaticCanvasSize = Enum.AutomaticSize.Y
+ScrollContainer.CanvasSize = UDim2.new(0, 0, 0, 0)
+
+local ScriptListLayout = Instance.new("UIListLayout")
+ScriptListLayout.Parent = ScrollContainer
+ScriptListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+ScriptListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+ScriptListLayout.Padding = UDim.new(0, 8)
+
+local ListPadding = Instance.new("UIPadding")
+ListPadding.PaddingTop = UDim.new(0, 8)
+ListPadding.PaddingBottom = UDim.new(0, 20)
+ListPadding.Parent = ScrollContainer
+
+local function makeButton(name, label, order)
+    local btn = Instance.new("TextButton")
+    local corner = Instance.new("UICorner")
+    btn.Name = name
+    btn.Parent = ScrollContainer
+    btn.BackgroundColor3 = Color3.fromRGB(50, 0, 0)
+    btn.Size = UDim2.new(0, 420, 0, 45)
+    btn.Font = Enum.Font.GothamBold
+    btn.Text = label
+    btn.TextColor3 = Color3.fromRGB(255, 255, 255)
+    btn.TextSize = 16
+    btn.LayoutOrder = order
+    btn.BorderSizePixel = 0
+    btn.Visible = true
+    corner.CornerRadius = UDim.new(0, 8)
+    corner.Parent = btn
+    btn.MouseEnter:Connect(function() btn.BackgroundColor3 = Color3.fromRGB(80, 0, 0) end)
+    btn.MouseLeave:Connect(function() btn.BackgroundColor3 = Color3.fromRGB(50, 0, 0) end)
+    return btn
+end
+
+local MainBtn = makeButton("MainBtn", "Burn The Ice For Brainrots", 1)
+
+MainBtn.MouseButton1Click:Connect(function()
+    HubGui:Destroy()
+    loadstring(game:HttpGet("https://pastefy.app/XiA9oqAn/raw"))()
+end)
+
+SearchBar:GetPropertyChangedSignal("Text"):Connect(function()
+    local text = SearchBar.Text:lower()
+    for _, child in pairs(ScrollContainer:GetChildren()) do
+        if child:IsA("TextButton") then
+            if text == "" or string.find(child.Name:lower(), text) or string.find(child.Text:lower(), text) then
+                child.Visible = true
+            else
+                child.Visible = false
+            end
+        end
+    end
+end)
+
+local isMinimized = false
+MinimizeBtn.MouseButton1Click:Connect(function()
+    isMinimized = not isMinimized
+    if isMinimized then
+        MainFrame:TweenSize(UDim2.new(0, 450, 0, 60), "Out", "Quad", 0.3, true)
+        ScrollContainer.Visible = false
+        MinimizeBtn.Text = "+"
+    else
+        MainFrame:TweenSize(UDim2.new(0, 450, 0, 350), "Out", "Quad", 0.3, true)
+        ScrollContainer.Visible = true
+        MinimizeBtn.Text = "-"
+    end
+end)
+
+local dragging, dragStart, startPos
+TopBar.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+        local mousePos = input.Position
+        local searchAbsPos = SearchBar.AbsolutePosition
+        local searchAbsSize = SearchBar.AbsoluteSize
+        local inSearch = mousePos.X >= searchAbsPos.X and mousePos.X <= searchAbsPos.X + searchAbsSize.X and mousePos.Y >= searchAbsPos.Y and mousePos.Y <= searchAbsPos.Y + searchAbsSize.Y
+        local minAbsPos = MinimizeBtn.AbsolutePosition
+        local minAbsSize = MinimizeBtn.AbsoluteSize
+        local inMin = mousePos.X >= minAbsPos.X and mousePos.X <= minAbsPos.X + minAbsSize.X and mousePos.Y >= minAbsPos.Y and mousePos.Y <= minAbsPos.Y + minAbsSize.Y
+        if not inSearch and not inMin then
+            dragging = true
+            dragStart = input.Position
+            startPos = MainFrame.Position
+            input.Changed:Connect(function() if input.UserInputState == Enum.UserInputState.End then dragging = false end end)
+        end
+    end
+end)
+
+UserInputService.InputChanged:Connect(function(input)
+    if dragging and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
+        local delta = input.Position - dragStart
+        MainFrame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+    end
+end)
