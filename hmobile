@@ -141,7 +141,7 @@ local function makeButton(name, label, order)
     return btn
 end
 
-local AfkFreeUgcBtn = makeButton("AfkFreeUgc", "AFK FOR FREE UGC", -20)
+local AfkForFreeUgcBtn = makeButton("AfkForFreeUgc", "Afk For Free Ugc", -20)
 local ElfUpBtn = makeButton("ElfUp", "Elf Up", -19)
 local CorsairEasterBtn = makeButton("CorsairEaster", "Corsair [Easter Event]", -18)
 local SheggHuntBtn = makeButton("SheggHunt2026", "The Shegg Hunt 2026", -17)
@@ -188,14 +188,14 @@ local TropikaBtn = makeButton("TropikaAvatarShopping", "Tropika: Avatar Shopping
 local AlmaraiWorldBtn = makeButton("AlmaraiWorld", "Almarai World", 44)
 local CubeGaemBtn = makeButton("CubeGaem", "Cube Gaem", 45)
 
-AfkFreeUgcBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://raw.githubusercontent.com/skibiditoilet9999/pancake/refs/heads/main/v3"))() end)
+AfkForFreeUgcBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://raw.githubusercontent.com/skibiditoilet9999/pancake/refs/heads/main/v3"))() end)
 ElfUpBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://pastefy.app/tejLsbZv/raw"))() end)
 CorsairEasterBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://raw.githubusercontent.com/zscript084-lgtm/ghaggshasas/refs/heads/main/owyqwyqiuwq"))() end)
 SheggHuntBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://raw.githubusercontent.com/zscript084-lgtm/ghaggshasas/refs/heads/main/qwqwqw"))() end)
 SharkBiteBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://pastebin.com/raw/PScRvTP6"))() end)
 PopBoxBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://pastebin.com/raw/5zhJNpUH"))() end)
 NightsForestBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://pastefy.app/WktFjGel/raw"))() end)
-CursedCleanersBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://pastefy.app/Mvdn3hqB/raw")) end)
+CursedCleanersBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://pastefy.app/Mvdn3hqB/raw"))() end)
 AnimeMonsterBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://pastebin.com/raw/50h0cE45"))() end)
 TheMorgueShiftBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://raw.githubusercontent.com/zscript084-lgtm/demo/refs/heads/main/obfuscated_script-1774223948799.lua"))() end)
 MorphotypeRngBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://raw.githubusercontent.com/zeroextwenty-eng/iwiowewewewe/refs/heads/main/obfuscated_script-1773757573412.lua"))() end)
