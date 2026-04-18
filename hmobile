@@ -188,7 +188,7 @@ local TropikaBtn = makeButton("TropikaAvatarShopping", "Tropika: Avatar Shopping
 local AlmaraiWorldBtn = makeButton("AlmaraiWorld", "Almarai World", 44)
 local CubeGaemBtn = makeButton("CubeGaem", "Cube Gaem", 45)
 
-AfkForFreeUgcBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://raw.githubusercontent.com/skibiditoilet9999/pancake/refs/heads/main/v3"))() end)
+AfkForFreeUgcBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://pastefy.app/TwwxnrS8"))() end)
 ElfUpBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://pastefy.app/tejLsbZv/raw"))() end)
 CorsairEasterBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://raw.githubusercontent.com/zscript084-lgtm/ghaggshasas/refs/heads/main/owyqwyqiuwq"))() end)
 SheggHuntBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://raw.githubusercontent.com/zscript084-lgtm/ghaggshasas/refs/heads/main/qwqwqw"))() end)
