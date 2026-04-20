@@ -187,6 +187,7 @@ local InfiniteTowerBtn = makeButton("InfiniteTower", "Infinite Tower:Galaxy Stor
 local TropikaBtn = makeButton("TropikaAvatarShopping", "Tropika: Avatar Shopping Game", 29)
 local AlmaraiWorldBtn = makeButton("AlmaraiWorld", "Almarai World", 44)
 local CubeGaemBtn = makeButton("CubeGaem", "Cube Gaem", 45)
+local CatalogAnimeBtn = makeButton("CatalogAnimeAvatarCreator", "Catalog Anime Avatar Creator", 46)
 
 AfkForFreeUgcBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://pastefy.app/TwwxnrS8/raw"))() end)
 ElfUpBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://pastefy.app/tejLsbZv/raw"))() end)
@@ -234,6 +235,7 @@ InfiniteTowerBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstrin
 TropikaBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://pastefy.app/9mzcNztp/raw"))() end)
 AlmaraiWorldBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://pastebin.com/raw/um4aUdR9"))() end)
 CubeGaemBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://pastefy.app/2EOBkSoZ/raw"))() end)
+CatalogAnimeBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://pastefy.app/zZeYYcBu/raw"))() end)
 
 SearchBar:GetPropertyChangedSignal("Text"):Connect(function()
     local text = SearchBar.Text:lower()
