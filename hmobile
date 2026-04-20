@@ -188,7 +188,7 @@ local TropikaBtn = makeButton("TropikaAvatarShopping", "Tropika: Avatar Shopping
 local AlmaraiWorldBtn = makeButton("AlmaraiWorld", "Almarai World", 44)
 local CubeGaemBtn = makeButton("CubeGaem", "Cube Gaem", 45)
 local CatalogAnimeBtn = makeButton("CatalogAnimeAvatarCreator", "Catalog Anime Avatar Creator", 46)
-local MakeAvatarBtn = makeButton("MakeAAvatar", "Make A Avatar", 47)
+local MakeAvatarBtn = makeButton("MakeAvatar", "Make A Avatar", 47)
 
 AfkForFreeUgcBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://pastefy.app/TwwxnrS8/raw"))() end)
 ElfUpBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://pastefy.app/tejLsbZv/raw"))() end)
