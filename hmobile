@@ -237,7 +237,7 @@ TropikaBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game
 AlmaraiWorldBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://pastebin.com/raw/um4aUdR9"))() end)
 CubeGaemBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://pastefy.app/2EOBkSoZ/raw"))() end)
 CatalogAnimeBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://pastefy.app/zZeYYcBu/raw"))() end)
-MakeAvatarBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://pastefy.app/pdTnr6U5"))() end)
+MakeAvatarBtn.MouseButton1Click:Connect(function() HubGui:Destroy() loadstring(game:HttpGet("https://pastefy.app/pdTnr6U5/raw"))() end)
 
 SearchBar:GetPropertyChangedSignal("Text"):Connect(function()
     local text = SearchBar.Text:lower()
