@@ -202,6 +202,7 @@ UIS.InputChanged:Connect(function(input)
 end)
 
 local scripts = {
+    {"Пятёрочка: АмНямания 2", "https://pastefy.app/9i5OcfGS/raw"},
     {"Afk For Free Ugc", "https://pastefy.app/TwwxnrS8/raw"},
     {"Elf Up", "https://pastefy.app/tejLsbZv/raw"},
     {"Corsair [Easter Event]", "https://raw.githubusercontent.com/zscript084-lgtm/ghaggshasas/refs/heads/main/owyqwyqiuwq"},
