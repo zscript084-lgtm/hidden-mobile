@@ -9,7 +9,7 @@ ScreenGui.Parent = game.CoreGui
 
 local Main = Instance.new("Frame")
 Main.Name = "Main"
-Main.Size = UDim2.new(0, 600, 0, 400) 
+Main.Size = UDim2.new(0, 600, 0, 400)
 Main.Position = UDim2.new(0.5, -300, 0.5, -200)
 Main.BackgroundTransparency = 1
 Main.BorderSizePixel = 0
@@ -19,7 +19,7 @@ local Sidebar = Instance.new("ImageLabel")
 Sidebar.Name = "Sidebar"
 Sidebar.Size = UDim2.new(0, 140, 1, 0)
 Sidebar.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
-Sidebar.BackgroundTransparency = 0.4 
+Sidebar.BackgroundTransparency = 0.4
 Sidebar.BorderSizePixel = 0
 Sidebar.Image = "rbxassetid://78143119809511"
 Sidebar.ScaleType = Enum.ScaleType.Crop
@@ -47,8 +47,8 @@ SidebarPadding.Parent = Sidebar
 
 local PageContainer = Instance.new("ImageLabel")
 PageContainer.Name = "PageContainer"
-PageContainer.Size = UDim2.new(1, -155, 1, 0) 
-PageContainer.Position = UDim2.new(0, 155, 0, 0) 
+PageContainer.Size = UDim2.new(1, -155, 1, 0)
+PageContainer.Position = UDim2.new(0, 155, 0, 0)
 PageContainer.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
 PageContainer.BackgroundTransparency = 0.4
 PageContainer.BorderSizePixel = 0
@@ -108,7 +108,7 @@ MainPage.Visible = true
 MainPage.Parent = Pages
 
 local SearchBar = Instance.new("TextBox")
-SearchBar.Size = UDim2.new(1, 0, 0, 40) 
+SearchBar.Size = UDim2.new(1, 0, 0, 40)
 SearchBar.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 SearchBar.BackgroundTransparency = 0.95
 SearchBar.Font = Enum.Font.Gotham
@@ -250,12 +250,13 @@ local scripts = {
     {"Almarai World", "https://pastebin.com/raw/um4aUdR9"},
     {"Cube Gaem", "https://pastefy.app/2EOBkSoZ/raw"},
     {"Catalog Anime", "https://pastefy.app/zZeYYcBu/raw"},
-    {"Make A Avatar", "https://pastefy.app/pdTnr6U5/raw"}
+    {"Make A Avatar", "https://pastefy.app/pdTnr6U5/raw"},
+    {"The Block", "https://pastefy.app/NKZx0AFr/raw"},
 }
 
 for _, data in ipairs(scripts) do
     local sBtn = Instance.new("TextButton")
-    sBtn.Size = UDim2.new(1, 0, 0, 42) 
+    sBtn.Size = UDim2.new(1, 0, 0, 42)
     sBtn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     sBtn.BackgroundTransparency = 0.96
     sBtn.Font = Enum.Font.Gotham
@@ -284,19 +285,19 @@ SettingsBtn.MouseButton1Click:Connect(function() MainPage.Visible = false Settin
 
 local dragging, dragStart, startPos
 Main.InputBegan:Connect(function(input)
-	if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) and not UIS:GetFocusedTextBox() then
-		dragging = true
-		dragStart = input.Position
-		startPos = Main.Position
-		input.Changed:Connect(function()
-			if input.UserInputState == Enum.UserInputState.End then dragging = false end
-		end)
-	end
+    if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) and not UIS:GetFocusedTextBox() then
+        dragging = true
+        dragStart = input.Position
+        startPos = Main.Position
+        input.Changed:Connect(function()
+            if input.UserInputState == Enum.UserInputState.End then dragging = false end
+        end)
+    end
 end)
 
 UIS.InputChanged:Connect(function(input)
-	if dragging and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
-		local delta = input.Position - dragStart
-		Main.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
-	end
+    if dragging and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
+        local delta = input.Position - dragStart
+        Main.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+    end
 end)
