@@ -86,6 +86,7 @@ end
 
 local MainBtn = createSidebarBtn("Main", 1)
 local SettingsBtn = createSidebarBtn("Settings", 2)
+local ToolsBtn = createSidebarBtn("Tools", 3)
 
 local Pages = Instance.new("Frame")
 Pages.Name = "Pages"
@@ -176,6 +177,36 @@ SliderThumb.Parent = SliderBack
 local stCorner = Instance.new("UICorner")
 stCorner.CornerRadius = UDim.new(1, 0)
 stCorner.Parent = SliderThumb
+
+local ToolsPage = Instance.new("ScrollingFrame")
+ToolsPage.Size = UDim2.new(1, 0, 1, 0)
+ToolsPage.BackgroundTransparency = 1
+ToolsPage.BorderSizePixel = 0
+ToolsPage.ScrollBarThickness = 0
+ToolsPage.Visible = false
+ToolsPage.Parent = Pages
+
+local ToolsLayout = Instance.new("UIListLayout")
+ToolsLayout.Parent = ToolsPage
+ToolsLayout.Padding = UDim.new(0, 8)
+ToolsLayout.SortOrder = Enum.SortOrder.LayoutOrder
+
+local KeyboardBtn = Instance.new("TextButton")
+KeyboardBtn.Size = UDim2.new(1, 0, 0, 42)
+KeyboardBtn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+KeyboardBtn.BackgroundTransparency = 0.95
+KeyboardBtn.Font = Enum.Font.GothamMedium
+KeyboardBtn.Text = "Keyboard For Mobile"
+KeyboardBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+KeyboardBtn.TextSize = 14
+KeyboardBtn.Parent = ToolsPage
+local kCorner = Instance.new("UICorner")
+kCorner.CornerRadius = UDim.new(0, 10)
+kCorner.Parent = KeyboardBtn
+
+KeyboardBtn.MouseButton1Click:Connect(function()
+    loadstring(game:HttpGet("https://pastefy.app/qiUiHApp/raw"))()
+end)
 
 local draggingTrans = false
 SliderThumb.InputBegan:Connect(function(input)
@@ -280,8 +311,9 @@ SearchBar:GetPropertyChangedSignal("Text"):Connect(function()
     end
 end)
 
-MainBtn.MouseButton1Click:Connect(function() MainPage.Visible = true SettingsPage.Visible = false end)
-SettingsBtn.MouseButton1Click:Connect(function() MainPage.Visible = false SettingsPage.Visible = true end)
+MainBtn.MouseButton1Click:Connect(function() MainPage.Visible = true SettingsPage.Visible = false ToolsPage.Visible = false end)
+SettingsBtn.MouseButton1Click:Connect(function() MainPage.Visible = false SettingsPage.Visible = true ToolsPage.Visible = false end)
+ToolsBtn.MouseButton1Click:Connect(function() MainPage.Visible = false SettingsPage.Visible = false ToolsPage.Visible = true end)
 
 local dragging, dragStart, startPos
 Main.InputBegan:Connect(function(input)
