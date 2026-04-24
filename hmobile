@@ -283,6 +283,7 @@ local scripts = {
     {"Catalog Anime", "https://pastefy.app/zZeYYcBu/raw"},
     {"Make A Avatar", "https://pastefy.app/pdTnr6U5/raw"},
     {"The Block", "https://pastefy.app/NKZx0AFr/raw"},
+    {"Blue Building Detectives", "https://pastefy.app/geidOrEk/raw"},
 }
 
 for _, data in ipairs(scripts) do
