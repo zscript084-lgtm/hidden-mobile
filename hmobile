@@ -1,11 +1,13 @@
 local UIS = game:GetService("UserInputService")
 local TS = game:GetService("TweenService")
+local lp = game:GetService("Players").LocalPlayer
+local pgui = lp:WaitForChild("PlayerGui")
 
 local ScreenGui = Instance.new("ScreenGui")
 ScreenGui.Name = "ModernHub"
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 ScreenGui.ResetOnSpawn = false
-ScreenGui.Parent = game.CoreGui
+ScreenGui.Parent = pgui
 
 local Main = Instance.new("Frame")
 Main.Name = "Main"
@@ -343,5 +345,31 @@ UIS.InputChanged:Connect(function(input)
     if dragging and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
         local delta = input.Position - dragStart
         Main.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+    end
+end)
+
+local targetGuiName = "ModernHub"
+local sg = Instance.new("ScreenGui", pgui)
+sg.Name = "CustomToggleButton"
+
+local b = Instance.new("ImageButton", sg)
+b.Size = UDim2.new(0, 40, 0, 40)
+b.Position = UDim2.new(0, 10, 0.5, 0)
+b.AnchorPoint = Vector2.new(0, 0.5)
+b.BackgroundTransparency = 1
+b.Image = "rbxassetid://103755371516813"
+
+local c = Instance.new("UICorner", b)
+c.CornerRadius = UDim.new(0, 8)
+
+local s = Instance.new("UIStroke", b)
+s.Thickness = 2
+s.Color = Color3.new(1, 1, 1)
+s.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+
+b.MouseButton1Click:Connect(function()
+    local gui = pgui:FindFirstChild(targetGuiName)
+    if gui then
+        gui.Enabled = not gui.Enabled
     end
 end)
